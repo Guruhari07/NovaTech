@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NovaTech | Test Verification Suite</title>
+  <!-- Outfit Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      max-width: 800px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+      background-color: #f9fafb;
+      color: #111827;
+      line-height: 1.6;
+    }
+    h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.25rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+    .subtitle {
+      color: #4b5563;
+      margin-bottom: 2rem;
+    }
+    .test-card {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      margin-bottom: 1.5rem;
+    }
+    .test-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid #f3f4f6;
+    }
+    .test-row:last-child {
+      border-bottom: none;
+    }
+    .test-name {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    .test-status {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.25rem 0.6rem;
+      border-radius: 9999px;
+    }
+    .status-pass {
+      background-color: #d1fae5;
+      color: #065f46;
+    }
+    .status-fail {
+      background-color: #fee2e2;
+      color: #991b1b;
+    }
+    .status-pending {
+      background-color: #f3f4f6;
+      color: #4b5563;
+    }
+    .btn {
+      display: inline-block;
+      background-color: #2563eb;
+      color: white;
+      font-weight: 600;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      text-align: center;
+      margin-right: 1rem;
+      font-size: 0.9rem;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-outline {
+      background-color: transparent;
+      border: 1px solid #d1d5db;
+      color: #374151;
+    }
+    .btn-outline:hover {
+      background-color: #f3f4f6;
+    }
+    .summary-box {
+      background-color: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 8px;
+      padding: 1rem 1.5rem;
+      margin-bottom: 2rem;
+      font-weight: 600;
+      color: #1e3a8a;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Programmatic Test Suite</h1>
+  <p class="subtitle">Validating State, LocalStorage synchronization, and Checkout simulation logic.</p>
+
+  <div id="test-summary" class="summary-box">
+    Pending execution... Click "Run Tests" to start.
+  </div>
+
+  <div class="test-card">
+    <div class="test-row" id="test-state-init">
+      <span class="test-name">1. LocalStorage Initialization & State Sync</span>
+      <span class="test-status status-pending">Pending</span>
+    </div>
+    <div class="test-row" id="test-user-registration">
+      <span class="test-name">2. User Account Registration & Obfuscation</span>
+      <span class="test-status status-pending">Pending</span>
+    </div>
+    <div class="test-row" id="test-user-login">
+      <span class="test-name">3. User Authentication Login Checks</span>
+      <span class="test-status status-pending">Pending</span>
+    </div>
+    <div class="test-row" id="test-cart-operations">
+      <span class="test-name">4. Add, Update Qty & Remove Cart Operations</span>
+      <span class="test-status status-pending">Pending</span>
+    </div>
+    <div class="test-row" id="test-coupon-code">
+      <span class="test-name">5. Promo Code (NOVATECH10) Validation</span>
+      <span class="test-status status-pending">Pending</span>
+    </div>
+    <div class="test-row" id="test-wishlist-toggle">
+      <span class="test-name">6. Wishlist Saved Accessories Storage</span>
+      <span class="test-status status-pending">Pending</span>
+    </div>
+    <div class="test-row" id="test-checkout-placement">
+      <span class="test-name">7. Checkout Order Placement & Stock Deduct</span>
+      <span class="test-status status-pending">Pending</span>
+    </div>
+  </div>
+
+  <div style="margin-top: 2rem;">
+    <button id="run-tests-btn" class="btn">Run Verification Tests</button>
+    <a href="index.html" class="btn btn-outline">Back to Website</a>
+  </div>
+
+  <script type="module" src="js/test_suite.js"></script>
+</body>
+</html>

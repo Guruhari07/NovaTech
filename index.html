@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NovaTech | Premium Tech Accessories</title>
+  <!-- Google Fonts: Outfit for Headings, Inter for Body -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="light-mode">
+
+  <!-- Header / Navigation -->
+  <header class="navbar-container">
+    <div class="navbar-wrapper container">
+      <!-- Logo -->
+      <a href="#/" class="logo-link">
+        <span class="logo-text">Nova<span class="logo-accent">Tech</span></span>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="nav-links">
+        <a href="#/" class="nav-link active" data-path="/">Home</a>
+        <a href="#/shop" class="nav-link" data-path="/shop">Shop</a>
+        <a href="#/about" class="nav-link" data-path="/about">About</a>
+        <a href="#/contact" class="nav-link" data-path="/contact">Contact</a>
+      </nav>
+
+      <!-- Search Bar -->
+      <div class="search-container">
+        <div class="search-input-wrapper">
+          <i data-lucide="search" class="search-icon"></i>
+          <input type="text" id="global-search" placeholder="Search accessories..." autocomplete="off">
+          <button id="clear-search" class="hidden-btn"><i data-lucide="x"></i></button>
+        </div>
+        <!-- Live Search Dropdown -->
+        <div id="live-search-results" class="search-dropdown hidden"></div>
+      </div>
+
+      <!-- Actions -->
+      <div class="navbar-actions">
+        <!-- Theme Toggle -->
+        <button id="theme-toggle" class="action-btn" aria-label="Toggle Theme">
+          <i data-lucide="moon" class="theme-icon-dark"></i>
+          <i data-lucide="sun" class="theme-icon-light hidden"></i>
+        </button>
+
+        <!-- Wishlist -->
+        <a href="#/wishlist" class="action-btn wishlist-icon-btn" aria-label="Wishlist">
+          <i data-lucide="heart"></i>
+          <span id="wishlist-count" class="badge">0</span>
+        </a>
+
+        <!-- Cart -->
+        <a href="#/cart" class="action-btn cart-icon-btn" aria-label="Cart">
+          <i data-lucide="shopping-bag"></i>
+          <span id="cart-count" class="badge">0</span>
+        </a>
+
+        <!-- User Profile -->
+        <div class="profile-dropdown-container">
+          <button id="profile-btn" class="action-btn profile-btn" aria-label="User Account">
+            <i data-lucide="user"></i>
+          </button>
+          <!-- User Dropdown Menu -->
+          <div id="profile-dropdown" class="profile-dropdown hidden">
+            <div class="dropdown-header">
+              <p id="dropdown-user-name" class="user-name">Guest User</p>
+              <p id="dropdown-user-email" class="user-email">Sign in to your account</p>
+            </div>
+            <div class="dropdown-divider"></div>
+            <a href="#/account" class="dropdown-item"><i data-lucide="user-check"></i> My Account</a>
+            <a href="#/account" class="dropdown-item" data-tab="orders"><i data-lucide="package"></i> Order History</a>
+            <a href="#/wishlist" class="dropdown-item"><i data-lucide="heart"></i> Saved Items</a>
+            <div class="dropdown-divider"></div>
+            <button id="dropdown-auth-btn" class="dropdown-item logout-btn"><i data-lucide="log-in"></i> Login</button>
+          </div>
+        </div>
+
+        <!-- Hamburger Toggle -->
+        <button id="hamburger-toggle" class="action-btn hamburger-btn" aria-label="Toggle Menu">
+          <i data-lucide="menu" class="menu-open-icon"></i>
+          <i data-lucide="x" class="menu-close-icon hidden"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu Overlay -->
+  <div id="mobile-menu" class="mobile-menu-overlay hidden">
+    <div class="mobile-menu-content">
+      <div class="mobile-search">
+        <i data-lucide="search"></i>
+        <input type="text" id="mobile-global-search" placeholder="Search accessories..." autocomplete="off">
+      </div>
+      <div class="mobile-links">
+        <a href="#/" class="mobile-link active" data-path="/">Home</a>
+        <a href="#/shop" class="mobile-link" data-path="/shop">Shop</a>
+        <a href="#/about" class="mobile-link" data-path="/about">About Us</a>
+        <a href="#/contact" class="mobile-link" data-path="/contact">Contact</a>
+        <div class="mobile-divider"></div>
+        <a href="#/account" class="mobile-link"><i data-lucide="user"></i> My Account</a>
+        <a href="#/wishlist" class="mobile-link"><i data-lucide="heart"></i> Wishlist (<span id="mobile-wishlist-count">0</span>)</a>
+        <a href="#/cart" class="mobile-link"><i data-lucide="shopping-bag"></i> Cart (<span id="mobile-cart-count">0</span>)</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Breadcrumbs Area -->
+  <div id="breadcrumb-container" class="breadcrumb-container container">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="#/">Home</a>
+      <span class="breadcrumb-separator">/</span>
+      <span id="breadcrumb-current" class="breadcrumb-current">Shop</span>
+    </nav>
+  </div>
+
+  <!-- Main Content Mount Point -->
+  <main id="app-content" class="app-main-content container">
+    <!-- Skeleton loader or loader placeholder when rendering page -->
+    <div class="skeleton-page-loader">
+      <div class="spinner"></div>
+    </div>
+  </main>
+
+  <!-- Quick View Modal -->
+  <div id="quick-view-modal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <button class="modal-close-btn" id="close-quick-view"><i data-lucide="x"></i></button>
+      <div class="modal-body" id="quick-view-content">
+        <!-- Rendered dynamically in app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll To Top Button -->
+  <button id="back-to-top" class="back-to-top-btn hidden-btn" aria-label="Back to Top">
+    <i data-lucide="arrow-up"></i>
+  </button>
+
+  <!-- Footer -->
+  <footer class="footer-container">
+    <div class="footer-grid container">
+      <!-- Brand column -->
+      <div class="footer-col brand-col">
+        <span class="footer-logo">Nova<span class="logo-accent">Tech</span></span>
+        <p class="footer-desc">Premium tech accessories designed for minimalists, creators, and professionals. Inspired by modern engineering and elegant craftsmanship.</p>
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+          <a href="#" class="social-link" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+          <a href="#" class="social-link" aria-label="GitHub"><i data-lucide="github"></i></a>
+        </div>
+      </div>
+      <!-- Links columns -->
+      <div class="footer-col">
+        <h4 class="footer-title">Shop</h4>
+        <ul class="footer-links">
+          <li><a href="#/shop">All Products</a></li>
+          <li><a href="#/shop?category=input">Keyboards & Mice</a></li>
+          <li><a href="#/shop?category=audio">Audio Accessories</a></li>
+          <li><a href="#/shop?category=power">Power & Cables</a></li>
+          <li><a href="#/shop?category=storage">High-Speed Storage</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-title">Company</h4>
+        <ul class="footer-links">
+          <li><a href="#/about">About Us</a></li>
+          <li><a href="#/about#careers">Careers</a></li>
+          <li><a href="#/contact">Contact Us</a></li>
+          <li><a href="#/about#terms">Terms of Service</a></li>
+          <li><a href="#/about#privacy">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <!-- Newsletter -->
+      <div class="footer-col newsletter-col">
+        <h4 class="footer-title">Newsletter</h4>
+        <p class="footer-desc">Subscribe to receive notifications about product launches and exclusive discounts.</p>
+        <form id="newsletter-form" class="newsletter-form">
+          <div class="newsletter-input-wrapper">
+            <input type="email" id="newsletter-email" placeholder="Your email address" required>
+            <button type="submit" class="newsletter-submit-btn" aria-label="Subscribe">
+              <i data-lucide="arrow-right"></i>
+            </button>
+          </div>
+          <p id="newsletter-message" class="newsletter-message hidden"></p>
+        </form>
+      </div>
+    </div>
+    <!-- Bottom line -->
+    <div class="footer-bottom container">
+      <p class="copyright-text">&copy; 2026 NovaTech Inc. All rights reserved. Simulating client-side operations via LocalStorage.</p>
+      <div class="payment-badges">
+        <span class="payment-badge">COD</span>
+        <span class="payment-badge">UPI</span>
+        <span class="payment-badge">Cards</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Application Source Files -->
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
